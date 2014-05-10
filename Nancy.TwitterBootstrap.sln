@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nancy.TwitterBootstrap", "Nancy.TwitterBootstrap\Nancy.TwitterBootstrap.csproj", "{CCE750B4-D967-4EBA-8790-48E52E137544}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CCE750B4-D967-4EBA-8790-48E52E137544}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CCE750B4-D967-4EBA-8790-48E52E137544}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CCE750B4-D967-4EBA-8790-48E52E137544}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CCE750B4-D967-4EBA-8790-48E52E137544}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
