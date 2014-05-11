@@ -141,6 +141,7 @@ namespace Nancy.TwitterBootstrap
             return _templates.RadioButton.FormatFromDictionary(ctx);
         }
 
+        // TODO: add method for no selected option
         // TODO: allow passing html attributes
         public string RadioButtonGroup<TValue>(string name, IEnumerable<ListOption<TValue>> options, TValue selectedOption)
         {
@@ -162,21 +163,53 @@ namespace Nancy.TwitterBootstrap
             return optionsBuilder.ToString();
         }
 
-        public string SelectList<TValue>(string name, IEnumerable<ListOption<TValue>> options,
-            TValue selectedValue, string @class = "")
+        public string SelectList<TValue>(string name, IEnumerable<ListOption<TValue>> options, object htmlAttributes = null)
         {
-            return SelectList(name, options, o => o.Value.Equals(selectedValue), false, @class);
+            return SelectList(name, options, o => false, false, htmlAttributes);
+        }
+
+        public string SelectList<TValue>(string name, IEnumerable<ListOption<TValue>> options,
+            TValue selectedValue, object htmlAttributes = null)
+        {
+            return SelectList(name, options, o => o.Value.Equals(selectedValue), false, htmlAttributes);
+        }
+
+        public string MultipleSelectList<TValue>(string name, IEnumerable<ListOption<TValue>> options, object htmlAttributes = null)
+        {
+            return SelectList(name, options, o => false, true, htmlAttributes);
         }
 
         public string MultipleSelectList<TValue>(string name, IEnumerable<ListOption<TValue>> options,
-            IEnumerable<TValue> selectedValues, string @class = "")
+            IEnumerable<TValue> selectedValues, object htmlAttributes = null)
         {
-            return SelectList(name, options, o => selectedValues.Any(sv => sv.Equals(o.Value)), true, @class);
+            return SelectList(name, options, o => selectedValues.Any(sv => sv.Equals(o.Value)), true, htmlAttributes);
         }
 
-        public string SelectList<TValue>(string name, IEnumerable<ListOption<TValue>> options, Func<ListOption<TValue>, bool> selectedOptions, bool allowMultiple = false, string @class = "")
+        public string MultipleSelectList<TValue>(string name, IEnumerable<ListOption<TValue>> options,
+            Func<ListOption<TValue>, bool> selectedOptions, object htmlAttributes = null)
+        {
+            return SelectList(name, options, selectedOptions, true, htmlAttributes);
+        }
+
+        public string SelectList<TValue>(string name, IEnumerable<ListOption<TValue>> options,
+            Func<ListOption<TValue>, bool> selectedOptions, object htmlAttributes = null)
+        {
+            return SelectList(name, options, selectedOptions, false, htmlAttributes);
+        }
+
+        public string SelectList<TValue>(string name, IEnumerable<ListOption<TValue>> options, Func<ListOption<TValue>, bool> selectedOptions, bool allowMultiple = false,  object htmlAttributes = null)
         {
             var optionsBuilder = new StringBuilder();
+
+            var defaultAttributes = new HtmlAttributes(new
+            {
+                @class = "form-control"
+            });
+
+            if (allowMultiple)
+            {
+                defaultAttributes["multiple"] = "true";
+            }
 
             foreach (var option in options)
             {
@@ -184,49 +217,74 @@ namespace Nancy.TwitterBootstrap
                 {
                     { "value", option.Value.ToString() },
                     { "label", option.Label },
-                    { "selected", selectedOptions(option) ? "selected" : string.Empty }
+                    { "selected", selectedOptions(option) ? " selected" : string.Empty }
                 }));
             }
 
             return _templates.SelectList.FormatFromDictionary(new Dictionary<string, string>
             {
-                {"id", name},
-                {"multiple", allowMultiple ? "multiple " : string.Empty},
                 {"name", name},
-                {"class", MergeCssClasses("form-control", @class)},
+                {"attributes", defaultAttributes.Merge(new HtmlAttributes(htmlAttributes)).ToString()},
                 {"options", optionsBuilder.ToString()}
             });
         }
 
-        public string Table(IEnumerable<string> headerRow, IEnumerable<IEnumerable<string>> dataRows, string @class = "")
+        public string Table(IEnumerable<string> headerRow, IEnumerable<IEnumerable<string>> dataRows, object htmlAttributes = null)
         {
-            var headerContent = TableRow(headerRow, _templates.TableHeaderCell);
+            var defaultAttributes = new HtmlAttributes(new
+            {
+                @class = "table"
+            });
+
+            var headerContent = headerRow == null ? string.Empty : TableRow(headerRow, _templates.TableHeaderCell);
 
             var bodyContent = new StringBuilder();
 
-            foreach (var dataRow in dataRows)
+            if (dataRows != null)
             {
-                bodyContent.Append(TableRow(dataRow, _templates.TableCell));
+                foreach (var dataRow in dataRows)
+                {
+                    bodyContent.Append(TableRow(dataRow, _templates.TableCell));
+                }
             }
-
-            var header = _templates.TableHeader.FormatFromDictionary(new Dictionary<string, string>
+            
+            var header = headerRow == null ? string.Empty : _templates.TableHeader.FormatFromDictionary(new Dictionary<string, string>
             {
                 {"content", headerContent}
             });
 
-            var body = _templates.TableBody.FormatFromDictionary(new Dictionary<string, string>
+            var body = dataRows == null ? string.Empty : _templates.TableBody.FormatFromDictionary(new Dictionary<string, string>
             {
                 {"content", bodyContent.ToString()}
             });
 
             return _templates.Table.FormatFromDictionary(new Dictionary<string, string>
             {
-                {"class", MergeCssClasses(@class, "table")},
+                {"attributes", defaultAttributes.Merge(new HtmlAttributes(htmlAttributes)).ToString() },
                 {"content", header + body}
             });
         }
+        
+        public string TextBox(string name, object value, object htmlAttributes = null)
+        {
+            return Input(name, value, "text", new HtmlAttributes(htmlAttributes));
+        }
 
-        public string TableRow(IEnumerable<string> row, string template)
+        public string ValidationMessage(string message, object htmlAttributes = null)
+        {
+            var defaultAttributes = new HtmlAttributes(new
+            {
+                @class = "help-block"
+            });
+
+            return _templates.ValidationMessage.FormatFromDictionary(new Dictionary<string, string>
+            {
+                {"message", message},
+                {"attributes", defaultAttributes.Merge(new HtmlAttributes(htmlAttributes)).ToString()}
+            });
+        }
+
+        protected virtual string TableRow(IEnumerable<string> row, string template)
         {
             var rowContent = new StringBuilder();
 
@@ -244,20 +302,7 @@ namespace Nancy.TwitterBootstrap
             });
         }
 
-        public string TextBox(string name, object value, string @class = "")
-        {
-            return Input(name, value, "text", @class);
-        }
-
-        public string ValidationMessage(string message)
-        {
-            return _templates.ValidationMessage.FormatFromDictionary(new Dictionary<string, string>
-            {
-                {"message", message}
-            });
-        }
-
-        private string Input(string name, object value, string type, HtmlAttributes attributes = null)
+        protected virtual string Input(string name, object value, string type, HtmlAttributes attributes = null)
         {
             if (attributes == null)
             {
@@ -268,19 +313,6 @@ namespace Nancy.TwitterBootstrap
             {
                 { "name", name },
                 { "attributes", attributes.ToString() },
-                { "type", type },
-                { "value", value == null ? string.Empty : value.ToString() }
-            });
-        }
-
-        // TODO: get rid of this guy
-        private string Input(string name, object value, string type, string @class)
-        {
-            return _templates.Input.FormatFromDictionary(new Dictionary<string, string>
-            {
-                { "id", name },
-                { "name", name },
-                { "class", MergeCssClasses(@class, "form-control") },
                 { "type", type },
                 { "value", value == null ? string.Empty : value.ToString() }
             });
