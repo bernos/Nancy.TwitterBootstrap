@@ -12,6 +12,8 @@
                                         </label>
                                     </div>";
 
+        public string CheckboxList = @"<div{attibutes}>{options}</div>";
+
         public string Input = @"<input type=""{type}"" name=""{name}"" value=""{value}""{attributes} />";
 
         public string Label = @"<label{attributes}>{label}</label>";
@@ -23,6 +25,8 @@
                                             {label}
                                         </label>
                                     </div>";
+
+        public string RadioButtonGroup = @"<div{attributes}>{options}</div>";
 
         public string SelectList = @"<select name=""{name}""{attributes}>{options}</select>";
         public string SelectListOption = @"<option value=""{value}""{selected}>{label}</option>";

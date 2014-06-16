@@ -98,7 +98,7 @@ namespace Nancy.TwitterBootstrap
 
         public string Email(string name, string value, object htmlAttributes = null)
         {
-            return Input(name, value, "email", new HtmlAttributes(htmlAttributes));
+            return Input(name, value, "email", htmlAttributes);
         }
 
         public string Label(string label, string @for = "", object htmlAttributes = null)
@@ -119,7 +119,7 @@ namespace Nancy.TwitterBootstrap
 
         public string Password(string name, object value, object htmlAttributes = null)
         {
-            return Input(name, value, "password", new HtmlAttributes(htmlAttributes));
+            return Input(name, value, "password", htmlAttributes);
         }
 
         public string RadioButton(string name, object value, string label, bool selected = false, object htmlAttributes = null)
@@ -141,8 +141,12 @@ namespace Nancy.TwitterBootstrap
             return _templates.RadioButton.FormatFromDictionary(ctx);
         }
 
-        // TODO: add method for no selected option
         // TODO: allow passing html attributes
+        public string RadioButtonGroup<TValue>(string name, IEnumerable<ListOption<TValue>> options)
+        {
+            return RadioButtonGroup(name, options, o => false);
+        }
+
         public string RadioButtonGroup<TValue>(string name, IEnumerable<ListOption<TValue>> options, TValue selectedOption)
         {
             return RadioButtonGroup(name, options, o => o.Value.Equals(selectedOption));
@@ -267,7 +271,7 @@ namespace Nancy.TwitterBootstrap
         
         public string TextBox(string name, object value, object htmlAttributes = null)
         {
-            return Input(name, value, "text", new HtmlAttributes(htmlAttributes));
+            return Input(name, value, "text", htmlAttributes);
         }
 
         public string ValidationMessage(string message, object htmlAttributes = null)
@@ -302,12 +306,10 @@ namespace Nancy.TwitterBootstrap
             });
         }
 
-        protected virtual string Input(string name, object value, string type, HtmlAttributes attributes = null)
+        protected virtual string Input(string name, object value, string type, object htmlAttributes = null)
         {
-            if (attributes == null)
-            {
-                attributes = new HtmlAttributes(null);
-            }
+            var attributes = new HtmlAttributes(htmlAttributes);
+            
 
             return _templates.Input.FormatFromDictionary(new Dictionary<string, string>
             {

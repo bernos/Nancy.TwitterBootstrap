@@ -1,9 +1,5 @@
-﻿using System;
+﻿using Nancy.TwitterBootstrap.Models;
 using System.Collections.Generic;
-using System.ComponentModel.Design;
-using System.Linq;
-using System.Text;
-using Nancy.TwitterBootstrap.Models;
 using Xunit;
 
 namespace Nancy.TwitterBootstrap.Tests
@@ -354,7 +350,7 @@ namespace Nancy.TwitterBootstrap.Tests
                                     </label>
                                 </div>";
 
-                AssertMarkupEqual(expected, _renderer.RadioButtonGroup("myradio", _options, 0));
+                AssertMarkupEqual(expected, _renderer.RadioButtonGroup("myradio", _options));
             }
 
             [Fact]
