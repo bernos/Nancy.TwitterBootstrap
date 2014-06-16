@@ -1,9 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+# Visual Studio 2013
+VisualStudioVersion = 12.0.30501.0
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nancy.TwitterBootstrap", "Nancy.TwitterBootstrap\Nancy.TwitterBootstrap.csproj", "{CCE750B4-D967-4EBA-8790-48E52E137544}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nancy.TwitterBootstrap.Tests", "Nancy.TwitterBootstrap.Tests\Nancy.TwitterBootstrap.Tests.csproj", "{3C8A9FCD-5358-413B-8427-DE63B746548E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nancy.TwitterBootstrap.Razor", "Nancy.TwitterBootstrap.Razor\Nancy.TwitterBootstrap.Razor.csproj", "{D3C4BDC2-21C9-4E5A-8BE0-08D69AB6CB5D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,6 +23,10 @@ Global
 		{3C8A9FCD-5358-413B-8427-DE63B746548E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3C8A9FCD-5358-413B-8427-DE63B746548E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3C8A9FCD-5358-413B-8427-DE63B746548E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D3C4BDC2-21C9-4E5A-8BE0-08D69AB6CB5D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D3C4BDC2-21C9-4E5A-8BE0-08D69AB6CB5D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D3C4BDC2-21C9-4E5A-8BE0-08D69AB6CB5D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D3C4BDC2-21C9-4E5A-8BE0-08D69AB6CB5D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
