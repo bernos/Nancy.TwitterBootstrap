@@ -31,7 +31,17 @@ namespace Nancy.TwitterBootstrap
             _templates = templates;
         }
 
-        public string BeginFormGroup(object attributes = null)
+        public string BeginFormGroup()
+        {
+            return BeginFormGroup(null);
+        }
+
+        public string BeginFormGroup(object attributes)
+        {
+            return BeginFormGroup(new HtmlAttributes(attributes));
+        }
+
+        public string BeginFormGroup(HtmlAttributes attributes)
         {
             var defaultAttributes = new HtmlAttributes(new
             {
@@ -41,7 +51,7 @@ namespace Nancy.TwitterBootstrap
 
             return _templates.BeginFormGroup.FormatFromDictionary(new Dictionary<string, string>
             {
-                { "attributes", defaultAttributes.Merge(new HtmlAttributes(attributes)).ToString() }
+                { "attributes", defaultAttributes.Merge(attributes).ToString() }
             });
         }
 

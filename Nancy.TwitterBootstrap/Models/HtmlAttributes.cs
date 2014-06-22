@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Nancy.TwitterBootstrap.Models
 {
-    internal class HtmlAttributes
+    public class HtmlAttributes
     {
         private readonly IDictionary<string, string> _attributes;
 
