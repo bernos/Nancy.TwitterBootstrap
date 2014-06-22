@@ -35,13 +35,23 @@ namespace Nancy.TwitterBootstrap.Tests
             }
 
             [Fact]
-            public void Should_Render_Custom_Attributes()
+            public void Should_Render_Custom_Attributes_Object()
             {
                 AssertMarkupEqual(@"<div id=""my-div"" class=""form-group pretty"">", _renderer.BeginFormGroup(new
                 {
                     Id = "my-div",
                     @class= "pretty"
                 }));
+            }
+
+            [Fact]
+            public void Should_Render_Custom_Attributes_HtmlAttributes_Class()
+            {
+                AssertMarkupEqual(@"<div id=""my-div"" class=""form-group pretty"">", _renderer.BeginFormGroup(new HtmlAttributes(new
+                {
+                    Id = "my-div",
+                    @class = "pretty"
+                })));
             }
         }
 
