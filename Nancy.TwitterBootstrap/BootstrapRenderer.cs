@@ -47,71 +47,7 @@ namespace Nancy.TwitterBootstrap
 
         
 
-        public string SelectList<TValue>(string name, IEnumerable<ListOption<TValue>> options, object htmlAttributes = null)
-        {
-            return SelectList(name, options, o => false, false, htmlAttributes);
-        }
-
-        public string SelectList<TValue>(string name, IEnumerable<ListOption<TValue>> options,
-            TValue selectedValue, object htmlAttributes = null)
-        {
-            return SelectList(name, options, o => o.Value.Equals(selectedValue), false, htmlAttributes);
-        }
-
-        public string MultipleSelectList<TValue>(string name, IEnumerable<ListOption<TValue>> options, object htmlAttributes = null)
-        {
-            return SelectList(name, options, o => false, true, htmlAttributes);
-        }
-
-        public string MultipleSelectList<TValue>(string name, IEnumerable<ListOption<TValue>> options,
-            IEnumerable<TValue> selectedValues, object htmlAttributes = null)
-        {
-            return SelectList(name, options, o => selectedValues.Any(sv => sv.Equals(o.Value)), true, htmlAttributes);
-        }
-
-        public string MultipleSelectList<TValue>(string name, IEnumerable<ListOption<TValue>> options,
-            Func<ListOption<TValue>, bool> selectedOptions, object htmlAttributes = null)
-        {
-            return SelectList(name, options, selectedOptions, true, htmlAttributes);
-        }
-
-        public string SelectList<TValue>(string name, IEnumerable<ListOption<TValue>> options,
-            Func<ListOption<TValue>, bool> selectedOptions, object htmlAttributes = null)
-        {
-            return SelectList(name, options, selectedOptions, false, htmlAttributes);
-        }
-
-        public string SelectList<TValue>(string name, IEnumerable<ListOption<TValue>> options, Func<ListOption<TValue>, bool> selectedOptions, bool allowMultiple = false,  object htmlAttributes = null)
-        {
-            var optionsBuilder = new StringBuilder();
-
-            var defaultAttributes = new HtmlAttributes(new
-            {
-                @class = "form-control"
-            });
-
-            if (allowMultiple)
-            {
-                defaultAttributes["multiple"] = "true";
-            }
-
-            foreach (var option in options)
-            {
-                optionsBuilder.Append(Templates.SelectListOption.FormatFromDictionary(new Dictionary<string, string>
-                {
-                    { "value", option.Value.ToString() },
-                    { "label", option.Label },
-                    { "selected", selectedOptions(option) ? " selected" : string.Empty }
-                }));
-            }
-
-            return Templates.SelectList.FormatFromDictionary(new Dictionary<string, string>
-            {
-                {"name", name},
-                {"attributes", defaultAttributes.Merge(new HtmlAttributes(htmlAttributes)).ToString()},
-                {"options", optionsBuilder.ToString()}
-            });
-        }
+        
 
         public string Table(IEnumerable<string> headerRow, IEnumerable<IEnumerable<string>> dataRows, object htmlAttributes = null)
         {

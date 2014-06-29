@@ -48,6 +48,7 @@
     <Compile Include="Extensions\CheckboxExtensions.cs" />
     <Compile Include="Extensions\FormExtensions.cs" />
     <Compile Include="Extensions\RadioButtonExtensions.cs" />
+    <Compile Include="Extensions\SelectListExtensions.cs" />
     <Compile Include="Extensions\StringExtensions.cs" />
     <Compile Include="Models\HtmlAttributes.cs" />
     <Compile Include="Models\ListOption.cs" />
