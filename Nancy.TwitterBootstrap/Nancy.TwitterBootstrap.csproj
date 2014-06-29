@@ -46,10 +46,17 @@
     <Compile Include="BootstrapRenderer.cs" />
     <Compile Include="BootstrapTemplates.cs" />
     <Compile Include="Extensions\CheckboxExtensions.cs" />
+    <Compile Include="Extensions\EmailExtensions.cs" />
     <Compile Include="Extensions\FormExtensions.cs" />
+    <Compile Include="Extensions\InputExtensions.cs" />
+    <Compile Include="Extensions\LabelExtensions.cs" />
+    <Compile Include="Extensions\PasswordExtensions.cs" />
     <Compile Include="Extensions\RadioButtonExtensions.cs" />
     <Compile Include="Extensions\SelectListExtensions.cs" />
     <Compile Include="Extensions\StringExtensions.cs" />
+    <Compile Include="Extensions\TableExtensions.cs" />
+    <Compile Include="Extensions\TextBoxExtensions.cs" />
+    <Compile Include="Extensions\ValidationExtensions.cs" />
     <Compile Include="Models\HtmlAttributes.cs" />
     <Compile Include="Models\ListOption.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

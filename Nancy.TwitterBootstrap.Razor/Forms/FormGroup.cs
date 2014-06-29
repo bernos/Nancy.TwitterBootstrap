@@ -1,4 +1,5 @@
 ﻿using System;
+using Nancy.TwitterBootstrap.Extensions;
 using Nancy.ViewEngines.Razor;
 
 namespace Nancy.TwitterBootstrap.Razor.Forms
