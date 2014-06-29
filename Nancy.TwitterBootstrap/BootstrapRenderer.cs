@@ -45,50 +45,7 @@ namespace Nancy.TwitterBootstrap
             return Input(name, value, "password", htmlAttributes);
         }
 
-        public string RadioButton(string name, object value, string label, bool selected = false, object htmlAttributes = null)
-        {
-            var defaultAttributes = new HtmlAttributes(new
-            {
-                @class = "radio"
-            });
-
-            var ctx = new Dictionary<string, string>
-            {
-                {"attributes", new HtmlAttributes(htmlAttributes).Merge(defaultAttributes).ToString() },
-                {"name", name},
-                {"value", value == null ? string.Empty : value.ToString()},
-                {"selected", selected ? " checked" : ""},
-                {"label", label}
-            };
-
-            return Templates.RadioButton.FormatFromDictionary(ctx);
-        }
-
-        // TODO: allow passing html attributes
-        public string RadioButtonGroup<TValue>(string name, IEnumerable<ListOption<TValue>> options)
-        {
-            return RadioButtonGroup(name, options, o => false);
-        }
-
-        public string RadioButtonGroup<TValue>(string name, IEnumerable<ListOption<TValue>> options, TValue selectedOption)
-        {
-            return RadioButtonGroup(name, options, o => o.Value.Equals(selectedOption));
-        }
-
-        // TODO: allow passing html attributes
-        public string RadioButtonGroup<TValue>(string name, IEnumerable<ListOption<TValue>> options,
-            Func<ListOption<TValue>, bool> selectedOption)
-        {
-            var optionsBuilder = new StringBuilder();
-
-            foreach (var radioGroupOption in options)
-            {
-                optionsBuilder.Append(RadioButton(name, radioGroupOption.Value, radioGroupOption.Label,
-                    selectedOption(radioGroupOption)));
-            }
-
-            return optionsBuilder.ToString();
-        }
+        
 
         public string SelectList<TValue>(string name, IEnumerable<ListOption<TValue>> options, object htmlAttributes = null)
         {
