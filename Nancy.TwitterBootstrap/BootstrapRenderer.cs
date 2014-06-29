@@ -122,18 +122,6 @@ namespace Nancy.TwitterBootstrap
             });
         }
 
-        protected virtual string Input(string name, object value, string type, object htmlAttributes = null)
-        {
-            var attributes = new HtmlAttributes(htmlAttributes);
-            
-
-            return Templates.Input.FormatFromDictionary(new Dictionary<string, string>
-            {
-                { "name", name },
-                { "attributes", attributes.ToString() },
-                { "type", type },
-                { "value", value == null ? string.Empty : value.ToString() }
-            });
-        }
+        
     }
 }
