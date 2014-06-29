@@ -17,51 +17,7 @@ namespace Nancy.TwitterBootstrap
         }
 
         
-        public string Checkbox(string name, object value, string label, bool selected = false, object attributes = null)
-        {
-            var defaultAttributes = new HtmlAttributes(new
-            {
-                @class = "checkbox"
-            });
-
-            var ctx = new Dictionary<string, string>
-            {
-                {"attributes", defaultAttributes.Merge(new HtmlAttributes(attributes)).ToString() },
-                {"name", name},
-                {"value", value == null ? string.Empty : value.ToString()},
-                {"selected", selected ? " checked" : ""},
-                {"label", label}
-            };
-
-            return Templates.Checkbox.FormatFromDictionary(ctx);
-        }
-
-        // TODO: allow passing html attributes
-        public string CheckboxList<TValue>(string name, IEnumerable<ListOption<TValue>> options)
-        {
-            return CheckboxList(name, options, o => false);
-        }
-
-        // TODO: allow passing html attributes
-        public string CheckboxList<TValue>(string name, IEnumerable<ListOption<TValue>> options,
-            IEnumerable<TValue> selectedOptions)
-        {
-            return CheckboxList(name, options, o => selectedOptions.Any(so => o.Value.Equals(so)));
-        }
-
-        public string CheckboxList<TValue>(string name, IEnumerable<ListOption<TValue>> options,
-            Func<ListOption<TValue>, bool> selectedOptions)
-        {
-            var optionsBuilder = new StringBuilder();
-
-            foreach (var checkboxListOption in options)
-            {
-                optionsBuilder.Append(Checkbox(name, checkboxListOption.Value, checkboxListOption.Label,
-                    selectedOptions(checkboxListOption)));
-            }
-
-            return optionsBuilder.ToString();
-        }
+        
 
         public string Email(string name, string value, object htmlAttributes = null)
         {
