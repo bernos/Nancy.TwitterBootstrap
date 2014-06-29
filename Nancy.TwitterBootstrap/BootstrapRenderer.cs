@@ -9,57 +9,14 @@ namespace Nancy.TwitterBootstrap
 {
     public class BootstrapRenderer
     {
-        public static string MergeCssClasses(string a, string b)
-        {
-            if (string.IsNullOrEmpty(a))
-            {
-                return b;
-            }
-
-            if (string.IsNullOrEmpty(b))
-            {
-                return a;
-            }
-
-            return a + " " + b;
-        }
-
-        private readonly BootstrapTemplates _templates;
+        public BootstrapTemplates Templates { get; private set; }
 
         public BootstrapRenderer(BootstrapTemplates templates)
         {
-            _templates = templates;
+            Templates = templates;
         }
 
-        public string BeginFormGroup()
-        {
-            return BeginFormGroup(null);
-        }
-
-        public string BeginFormGroup(object attributes)
-        {
-            return BeginFormGroup(new HtmlAttributes(attributes));
-        }
-
-        public string BeginFormGroup(HtmlAttributes attributes)
-        {
-            var defaultAttributes = new HtmlAttributes(new
-            {
-                @class = "form-group"
-            });
-
-
-            return _templates.BeginFormGroup.FormatFromDictionary(new Dictionary<string, string>
-            {
-                { "attributes", defaultAttributes.Merge(attributes).ToString() }
-            });
-        }
-
-        public string EndFormGroup()
-        {
-            return _templates.EndFormGroup;
-        }
-
+        
         public string Checkbox(string name, object value, string label, bool selected = false, object attributes = null)
         {
             var defaultAttributes = new HtmlAttributes(new
@@ -76,7 +33,7 @@ namespace Nancy.TwitterBootstrap
                 {"label", label}
             };
 
-            return _templates.Checkbox.FormatFromDictionary(ctx);
+            return Templates.Checkbox.FormatFromDictionary(ctx);
         }
 
         // TODO: allow passing html attributes
@@ -120,7 +77,7 @@ namespace Nancy.TwitterBootstrap
                 attributes["for"] = @for;
             }
 
-            return _templates.Label.FormatFromDictionary(new Dictionary<string, string>
+            return Templates.Label.FormatFromDictionary(new Dictionary<string, string>
             {
                 { "attributes", attributes.ToString() },
                 { "label", label }
@@ -148,7 +105,7 @@ namespace Nancy.TwitterBootstrap
                 {"label", label}
             };
 
-            return _templates.RadioButton.FormatFromDictionary(ctx);
+            return Templates.RadioButton.FormatFromDictionary(ctx);
         }
 
         // TODO: allow passing html attributes
@@ -227,7 +184,7 @@ namespace Nancy.TwitterBootstrap
 
             foreach (var option in options)
             {
-                optionsBuilder.Append(_templates.SelectListOption.FormatFromDictionary(new Dictionary<string, string>
+                optionsBuilder.Append(Templates.SelectListOption.FormatFromDictionary(new Dictionary<string, string>
                 {
                     { "value", option.Value.ToString() },
                     { "label", option.Label },
@@ -235,7 +192,7 @@ namespace Nancy.TwitterBootstrap
                 }));
             }
 
-            return _templates.SelectList.FormatFromDictionary(new Dictionary<string, string>
+            return Templates.SelectList.FormatFromDictionary(new Dictionary<string, string>
             {
                 {"name", name},
                 {"attributes", defaultAttributes.Merge(new HtmlAttributes(htmlAttributes)).ToString()},
@@ -250,7 +207,7 @@ namespace Nancy.TwitterBootstrap
                 @class = "table"
             });
 
-            var headerContent = headerRow == null ? string.Empty : TableRow(headerRow, _templates.TableHeaderCell);
+            var headerContent = headerRow == null ? string.Empty : TableRow(headerRow, Templates.TableHeaderCell);
 
             var bodyContent = new StringBuilder();
 
@@ -258,21 +215,21 @@ namespace Nancy.TwitterBootstrap
             {
                 foreach (var dataRow in dataRows)
                 {
-                    bodyContent.Append(TableRow(dataRow, _templates.TableCell));
+                    bodyContent.Append(TableRow(dataRow, Templates.TableCell));
                 }
             }
             
-            var header = headerRow == null ? string.Empty : _templates.TableHeader.FormatFromDictionary(new Dictionary<string, string>
+            var header = headerRow == null ? string.Empty : Templates.TableHeader.FormatFromDictionary(new Dictionary<string, string>
             {
                 {"content", headerContent}
             });
 
-            var body = dataRows == null ? string.Empty : _templates.TableBody.FormatFromDictionary(new Dictionary<string, string>
+            var body = dataRows == null ? string.Empty : Templates.TableBody.FormatFromDictionary(new Dictionary<string, string>
             {
                 {"content", bodyContent.ToString()}
             });
 
-            return _templates.Table.FormatFromDictionary(new Dictionary<string, string>
+            return Templates.Table.FormatFromDictionary(new Dictionary<string, string>
             {
                 {"attributes", defaultAttributes.Merge(new HtmlAttributes(htmlAttributes)).ToString() },
                 {"content", header + body}
@@ -291,7 +248,7 @@ namespace Nancy.TwitterBootstrap
                 @class = "help-block"
             });
 
-            return _templates.ValidationMessage.FormatFromDictionary(new Dictionary<string, string>
+            return Templates.ValidationMessage.FormatFromDictionary(new Dictionary<string, string>
             {
                 {"message", message},
                 {"attributes", defaultAttributes.Merge(new HtmlAttributes(htmlAttributes)).ToString()}
@@ -310,7 +267,7 @@ namespace Nancy.TwitterBootstrap
                 }));
             }
 
-            return _templates.TableRow.FormatFromDictionary(new Dictionary<string, string>
+            return Templates.TableRow.FormatFromDictionary(new Dictionary<string, string>
             {
                 {"content", rowContent.ToString()}
             });
@@ -321,7 +278,7 @@ namespace Nancy.TwitterBootstrap
             var attributes = new HtmlAttributes(htmlAttributes);
             
 
-            return _templates.Input.FormatFromDictionary(new Dictionary<string, string>
+            return Templates.Input.FormatFromDictionary(new Dictionary<string, string>
             {
                 { "name", name },
                 { "attributes", attributes.ToString() },

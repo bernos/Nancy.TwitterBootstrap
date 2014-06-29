@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="BootstrapRenderer.cs" />
     <Compile Include="BootstrapTemplates.cs" />
+    <Compile Include="Extensions\FormExtensions.cs" />
     <Compile Include="Extensions\StringExtensions.cs" />
     <Compile Include="Models\HtmlAttributes.cs" />
     <Compile Include="Models\ListOption.cs" />

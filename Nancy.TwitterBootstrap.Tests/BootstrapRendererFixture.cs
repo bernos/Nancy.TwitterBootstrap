@@ -1,4 +1,5 @@
-﻿using Nancy.TwitterBootstrap.Models;
+﻿using Nancy.TwitterBootstrap.Extensions;
+using Nancy.TwitterBootstrap.Models;
 using System.Collections.Generic;
 using Xunit;
 
