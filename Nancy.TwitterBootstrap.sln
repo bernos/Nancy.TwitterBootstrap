@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nancy.TwitterBootstrap.Test
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nancy.TwitterBootstrap.Razor", "Nancy.TwitterBootstrap.Razor\Nancy.TwitterBootstrap.Razor.csproj", "{D3C4BDC2-21C9-4E5A-8BE0-08D69AB6CB5D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nancy.TwitterBootstrap.Example", "Nancy.TwitterBootstrap.Example\Nancy.TwitterBootstrap.Example.csproj", "{C4AF0019-B245-4744-8712-DE6E7585F844}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{D3C4BDC2-21C9-4E5A-8BE0-08D69AB6CB5D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D3C4BDC2-21C9-4E5A-8BE0-08D69AB6CB5D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D3C4BDC2-21C9-4E5A-8BE0-08D69AB6CB5D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C4AF0019-B245-4744-8712-DE6E7585F844}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C4AF0019-B245-4744-8712-DE6E7585F844}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C4AF0019-B245-4744-8712-DE6E7585F844}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C4AF0019-B245-4744-8712-DE6E7585F844}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

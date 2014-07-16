@@ -1,0 +1,50 @@
+﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=C9B3E1BE228485449A74B7BBAB2DF6F3/@KeyIndexDefined">True</s:Boolean>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=C9B3E1BE228485449A74B7BBAB2DF6F3/Applicability/=Live/@EntryIndexedValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=C9B3E1BE228485449A74B7BBAB2DF6F3/Field/=INPUT/@KeyIndexDefined">True</s:Boolean>
+	<s:Int64 x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=C9B3E1BE228485449A74B7BBAB2DF6F3/Field/=INPUT/Order/@EntryValue">0</s:Int64>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=C9B3E1BE228485449A74B7BBAB2DF6F3/Field/=INPUTTYPE/@KeyIndexDefined">True</s:Boolean>
+	<s:Int64 x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=C9B3E1BE228485449A74B7BBAB2DF6F3/Field/=INPUTTYPE/Order/@EntryValue">2</s:Int64>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=C9B3E1BE228485449A74B7BBAB2DF6F3/Field/=VALUETYPE/@KeyIndexDefined">True</s:Boolean>
+	<s:Int64 x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=C9B3E1BE228485449A74B7BBAB2DF6F3/Field/=VALUETYPE/Order/@EntryValue">1</s:Int64>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=C9B3E1BE228485449A74B7BBAB2DF6F3/Reformat/@EntryValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=C9B3E1BE228485449A74B7BBAB2DF6F3/Scope/=C3001E7C0DA78E4487072B7E050D86C5/@KeyIndexDefined">True</s:Boolean>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=C9B3E1BE228485449A74B7BBAB2DF6F3/Scope/=C3001E7C0DA78E4487072B7E050D86C5/CustomProperties/=minimumLanguageVersion/@EntryIndexedValue">2.0</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=C9B3E1BE228485449A74B7BBAB2DF6F3/Scope/=C3001E7C0DA78E4487072B7E050D86C5/Type/@EntryValue">InCSharpFile</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=C9B3E1BE228485449A74B7BBAB2DF6F3/Shortcut/@EntryValue">input</s:String>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=C9B3E1BE228485449A74B7BBAB2DF6F3/ShortenQualifiedReferences/@EntryValue">True</s:Boolean>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=C9B3E1BE228485449A74B7BBAB2DF6F3/Text/@EntryValue">public static string $INPUT$(this BootstrapRenderer renderer, string name, $VALUETYPE$ value, object htmlAttributes = null)&#xD;
+{&#xD;
+    return Input(renderer, name, value, "$INPUTTYPE$", htmlAttributes);&#xD;
+}</s:String>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=D189A0D02077D54CA46A27EB872EB994/@KeyIndexDefined">True</s:Boolean>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=D189A0D02077D54CA46A27EB872EB994/Shortcut/@EntryValue">inputhelper</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=D189A0D02077D54CA46A27EB872EB994/Text/@EntryValue">// $INPUTTYPE$ //&#xD;
+&#xD;
+public static IHtmlString $INPUTTYPE$&lt;T&gt;(this BootstrapHelpers&lt;T&gt; helpers, string name, $VALUETYPE$ value, object htmlAttributes = null)&#xD;
+{&#xD;
+    return new NonEncodedHtmlString(helpers.Renderer.$INPUTTYPE$(name, value, htmlAttributes));&#xD;
+}&#xD;
+&#xD;
+public static IHtmlString $INPUTTYPE$For&lt;T&gt;(this BootstrapHelpers&lt;T&gt; helpers, Expression&lt;Func&lt;T, $VALUETYPE$&gt;&gt; expression, object htmlAttributes = null)&#xD;
+{&#xD;
+    return $INPUTTYPE$For(helpers, helpers.View.Model, expression, htmlAttributes);&#xD;
+}&#xD;
+&#xD;
+public static IHtmlString $INPUTTYPE$For&lt;T&gt;(this BootstrapHelpers&lt;T&gt; helpers, T model,  Expression&lt;Func&lt;T, $VALUETYPE$&gt;&gt; expression, object htmlAttributes = null)&#xD;
+{&#xD;
+    var name = expression.GetTargetMemberInfo().Name;&#xD;
+    var value = expression.Compile()(model);&#xD;
+&#xD;
+    return $INPUTTYPE$(helpers, name, value, htmlAttributes);&#xD;
+}</s:String>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=D189A0D02077D54CA46A27EB872EB994/Reformat/@EntryValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=D189A0D02077D54CA46A27EB872EB994/ShortenQualifiedReferences/@EntryValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=D189A0D02077D54CA46A27EB872EB994/Applicability/=Live/@EntryIndexedValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=D189A0D02077D54CA46A27EB872EB994/Scope/=C3001E7C0DA78E4487072B7E050D86C5/@KeyIndexDefined">True</s:Boolean>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=D189A0D02077D54CA46A27EB872EB994/Scope/=C3001E7C0DA78E4487072B7E050D86C5/Type/@EntryValue">InCSharpFile</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=D189A0D02077D54CA46A27EB872EB994/Scope/=C3001E7C0DA78E4487072B7E050D86C5/CustomProperties/=minimumLanguageVersion/@EntryIndexedValue">2.0</s:String>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=D189A0D02077D54CA46A27EB872EB994/Field/=INPUTTYPE/@KeyIndexDefined">True</s:Boolean>
+	<s:Int64 x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=D189A0D02077D54CA46A27EB872EB994/Field/=INPUTTYPE/Order/@EntryValue">0</s:Int64>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=D189A0D02077D54CA46A27EB872EB994/Field/=VALUETYPE/@KeyIndexDefined">True</s:Boolean>
+	<s:Int64 x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=D189A0D02077D54CA46A27EB872EB994/Field/=VALUETYPE/Order/@EntryValue">1</s:Int64></wpf:ResourceDictionary>

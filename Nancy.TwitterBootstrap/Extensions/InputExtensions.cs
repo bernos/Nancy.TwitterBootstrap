@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace Nancy.TwitterBootstrap.Extensions
 {
-    // datetime, datetime-local, date, month, time, week, tel, 
+    // month, time, week 
     public static class InputExtensions
     {
         public static string Input(this BootstrapRenderer renderer, string name, object value, string type, object htmlAttributes = null)
@@ -26,12 +26,27 @@ namespace Nancy.TwitterBootstrap.Extensions
             return Input(renderer, name, value, "color", htmlAttributes);
         }
 
+        public static string Date(this BootstrapRenderer renderer, string name, DateTime value, object htmlAttributes = null)
+        {
+            return Input(renderer, name, value.ToString("yyyy-MM-dd"), "date", htmlAttributes);
+        }
+
+        public static string DateTime(this BootstrapRenderer renderer, string name, DateTime value, object htmlAttributes = null)
+        {
+            return Input(renderer, name, string.Format("{0:s}{0:zzz}", value), "datetime", htmlAttributes);
+        }
+
+        public static string DateTimeLocal(this BootstrapRenderer renderer, string name, DateTime value, object htmlAttributes = null)
+        {
+            return Input(renderer, name, string.Format("{0:s}", value), "datetime-local", htmlAttributes);
+        }
+
         public static string Email(this BootstrapRenderer renderer, string name, string value, object htmlAttributes = null)
         {
             return Input(renderer, name, value, "email", htmlAttributes);
         }
 
-        public static string Number(this BootstrapRenderer renderer, string name, string value,
+        public static string Number(this BootstrapRenderer renderer, string name, object value,
             object htmlAttributes = null)
         {
             return Input(renderer, name, value, "number", htmlAttributes);

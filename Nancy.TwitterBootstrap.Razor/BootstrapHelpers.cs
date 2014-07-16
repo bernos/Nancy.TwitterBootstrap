@@ -14,6 +14,21 @@ namespace Nancy.TwitterBootstrap.Razor
         private readonly BootstrapRenderer _renderer;
         private readonly IRenderContext _renderContext;
 
+        public NancyRazorViewBase<TModel> View
+        {
+            get { return _view; }
+        }
+
+        public BootstrapRenderer Renderer
+        {
+            get { return _renderer; }
+        }
+
+        public IRenderContext RenderContext
+        {
+            get { return _renderContext; }
+        }
+
         public BootstrapHelpers(BootstrapRenderer renderer, RazorViewEngine engine, IRenderContext renderContext, TModel model, NancyRazorViewBase<TModel> view)
         {
             _view = view;

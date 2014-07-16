@@ -1,0 +1,29 @@
+﻿@using Nancy.TwitterBootstrap.Razor.Extensions
+@inherits Nancy.TwitterBootstrap.Razor.BootstrapView<Nancy.TwitterBootstrap.Example.Models.ExampleViewModel>
+
+@{
+    ViewBag.Title = "title";
+    Layout = "_Layout";
+}
+
+<h2>Form controls</h2>
+
+@using (Bootstrap.BeginFormGroupFor(m => m.Color))
+{
+    @Bootstrap.ColorFor(m => m.Color)
+}
+
+@using (Bootstrap.BeginFormGroupFor(m => m.DateTime))
+{
+    @Bootstrap.DateFor(m => m.DateTime)
+}
+
+@using (Bootstrap.BeginFormGroupFor(m => m.DateTime))
+{
+    @Bootstrap.DateTimeFor(m => m.DateTime)
+}
+
+@using (Bootstrap.BeginFormGroupFor(m => m.DateTime))
+{
+    @Bootstrap.DateTimeLocalFor(m => m.DateTime)
+}

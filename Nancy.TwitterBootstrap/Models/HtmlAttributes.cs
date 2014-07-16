@@ -9,11 +9,15 @@ namespace Nancy.TwitterBootstrap.Models
     {
         private readonly IDictionary<string, string> _attributes;
 
-        public HtmlAttributes(Object attributes)
+        public HtmlAttributes(object attributes)
         {
             _attributes = new Dictionary<string, string>();
 
-            if (attributes != null)
+            if (attributes as HtmlAttributes != null)
+            {
+                Merge(attributes as HtmlAttributes);
+            } 
+            else if (attributes != null)
             {
                 foreach (var property in attributes.GetType().GetProperties())
                 {
