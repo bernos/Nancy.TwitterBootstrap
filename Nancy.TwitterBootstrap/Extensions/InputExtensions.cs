@@ -10,7 +10,12 @@ namespace Nancy.TwitterBootstrap.Extensions
         public static string Input(this BootstrapRenderer renderer, string name, object value, string type, object htmlAttributes = null)
         {
             var attributes = new HtmlAttributes(htmlAttributes);
-            
+
+            attributes.Merge(new HtmlAttributes(new
+            {
+                @class = "form-control"
+            }));
+
             return renderer.Templates.Input.FormatFromDictionary(new Dictionary<string, string>
             {
                 { "name", name },
@@ -67,6 +72,24 @@ namespace Nancy.TwitterBootstrap.Extensions
             object htmlAttributes = null)
         {
             return Input(renderer, name, value, "tel", htmlAttributes);
+        }
+
+        public static string TextArea(this BootstrapRenderer renderer, string name, object value,
+            object htmlAttributes = null)
+        {
+            var attributes = new HtmlAttributes(htmlAttributes);
+
+            attributes.Merge(new HtmlAttributes(new
+            {
+                @class = "form-control"
+            }));
+
+            return renderer.Templates.TextArea.FormatFromDictionary(new Dictionary<string, string>
+            {
+                { "name", name },
+                { "attributes", attributes.ToString() },
+                { "value", value == null ? String.Empty : value.ToString() }
+            });
         }
 
         public static string TextBox(this BootstrapRenderer renderer, string name, object value, object htmlAttributes = null)

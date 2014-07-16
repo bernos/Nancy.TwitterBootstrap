@@ -221,6 +221,29 @@ namespace Nancy.TwitterBootstrap.Razor.Extensions
             return TelephoneNumber(helpers, name, value, htmlAttributes);
         }
 
+        // TextArea //
+
+        public static IHtmlString TextArea<T>(this BootstrapHelpers<T> helpers, string name, object value,
+            object htmlAttributes = null)
+        {
+            return new NonEncodedHtmlString(helpers.Renderer.TextArea(name, value, htmlAttributes));
+        }
+
+        public static IHtmlString TextAreaFor<T>(this BootstrapHelpers<T> helpers, Expression<Func<T, object>> expression,
+            object htmlAttributes = null)
+        {
+            return TextAreaFor(helpers, helpers.View.Model, expression, htmlAttributes);
+        }
+
+        public static IHtmlString TextAreaFor<T>(this BootstrapHelpers<T> helpers, T model, Expression<Func<T, object>> expression,
+            object htmlAttributes = null)
+        {
+            var name = expression.GetTargetMemberInfo().Name;
+            var value = expression.Compile()(model);
+
+            return TextArea(helpers, name, value, htmlAttributes);
+        }
+
         // TextBox //
 
         public static IHtmlString TextBox<T>(this BootstrapHelpers<T> helpers, string name, object value,

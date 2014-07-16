@@ -8,22 +8,61 @@
 
 <h2>Form controls</h2>
 
-@using (Bootstrap.BeginFormGroupFor(m => m.Color))
-{
-    @Bootstrap.ColorFor(m => m.Color)
-}
+<form>
 
-@using (Bootstrap.BeginFormGroupFor(m => m.DateTime))
-{
-    @Bootstrap.DateFor(m => m.DateTime)
-}
 
-@using (Bootstrap.BeginFormGroupFor(m => m.DateTime))
-{
-    @Bootstrap.DateTimeFor(m => m.DateTime)
-}
+    @using (Bootstrap.BeginFormGroupFor(m => m.Color))
+    {
+        @Bootstrap.LabelFor(m => m.Color)
+        @Bootstrap.ColorFor(m => m.Color)
+    }
 
-@using (Bootstrap.BeginFormGroupFor(m => m.DateTime))
-{
-    @Bootstrap.DateTimeLocalFor(m => m.DateTime)
-}
+    @using (Bootstrap.BeginFormGroupFor(m => m.DateTime))
+    {
+        @Bootstrap.LabelFor(m => m.DateTime)
+        @Bootstrap.DateFor(m => m.DateTime)
+    }
+
+    @using (Bootstrap.BeginFormGroupFor(m => m.DateTime))
+    {
+        @Bootstrap.LabelFor(m => m.DateTime)
+        @Bootstrap.DateTimeFor(m => m.DateTime)
+    }
+
+    @using (Bootstrap.BeginFormGroupFor(m => m.DateTime))
+    {
+        @Bootstrap.LabelFor(m => m.DateTime)
+        @Bootstrap.DateTimeLocalFor(m => m.DateTime)
+    }
+    
+    @using (Bootstrap.BeginFormGroupFor(m => m.Number))
+    {
+        @Bootstrap.LabelFor(m => m.Number)
+        @Bootstrap.NumberFor(m => m.Number)
+    }
+    
+    @using (Bootstrap.BeginFormGroupFor(m => m.Password))
+    {
+        @Bootstrap.LabelFor(m => m.Color)
+        @Bootstrap.PasswordFor(m => m.Password)
+    }
+    
+    @using (Bootstrap.BeginFormGroupFor(m => m.Email))
+    {
+        @Bootstrap.LabelFor(m => m.Email)
+        @Bootstrap.EmailFor(m => m.Email)
+    }
+    
+    @using (Bootstrap.BeginFormGroupFor(m => m.Text))
+    {
+        @Bootstrap.LabelFor(m => m.Text)
+        @Bootstrap.TextBoxFor(m => m.Text)
+    }
+    
+    @using (Bootstrap.BeginFormGroupFor(m => m.Text))
+    {
+        @Bootstrap.LabelFor(m => m.Text)
+        @Bootstrap.TextAreaFor(m => m.Text)
+    }
+
+</form>

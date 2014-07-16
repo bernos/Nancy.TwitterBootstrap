@@ -55,6 +55,7 @@
     <Compile Include="BootstrapHelpers.cs" />
     <Compile Include="BootstrapView.cs" />
     <Compile Include="Extensions\InputExtensions.cs" />
+    <Compile Include="Extensions\LabelExtensions.cs" />
     <Compile Include="Forms\FormGroup.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

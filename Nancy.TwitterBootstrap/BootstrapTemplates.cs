@@ -38,6 +38,8 @@
         public string TableHeaderCell = @"<th>{content}</th>";
         public string TableRow = @"<tr>{content}</tr>";
 
+        public string TextArea = @"<textarea name=""{name}""{attributes}>{value}</textarea>";
+
         public string ValidationMessage = @"<span{attributes}>{message}</span>";
     }
 }
